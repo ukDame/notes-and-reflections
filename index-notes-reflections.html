@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Free Notes & Reflections - Cancer Journey</title>
+    <link href="https://fonts.googleapis.com/css2?family=Literata:wght@400;600;700&family=Source+Sans+3:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #2d5f5d;
+            --primary-light: #3d7f7d;
+            --accent: #b8926a;
+            --bg: #faf9f7;
+            --card-bg: #ffffff;
+            --text: #2c3e3c;
+            --text-light: #6b7c7a;
+            --border: #e5e3df;
+            --shadow: rgba(45, 95, 93, 0.08);
+        }
+
+        body {
+            font-family: 'Source Sans 3', sans-serif;
+            background: linear-gradient(135deg, #faf9f7 0%, #f5f3ef 100%);
+            color: var(--text);
+            line-height: 1.6;
+            padding: 20px;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            animation: fadeIn 0.8s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        h1 {
+            font-family: 'Literata', serif;
+            font-size: 3em;
+            color: var(--primary);
+            font-weight: 700;
+            margin-bottom: 15px;
+            letter-spacing: -1px;
+            line-height: 1.2;
+        }
+
+        .subtitle {
+            font-size: 1.3em;
+            color: var(--text-light);
+            font-weight: 300;
+            margin-bottom: 25px;
+        }
+
+        .intro-text {
+            font-size: 1.15em;
+            color: var(--text);
+            max-width: 650px;
+            margin: 0 auto 20px;
+            line-height: 1.8;
+        }
+
+        .free-badge {
+            display: inline-block;
+            background: var(--accent);
+            color: white;
+            padding: 8px 20px;
+            border-radius: 25px;
+            font-weight: 600;
+            font-size: 0.95em;
+            margin-top: 10px;
+            letter-spacing: 0.5px;
+        }
+
+        .main-card {
+            background: var(--card-bg);
+            border-radius: 16px;
+            padding: 50px;
+            box-shadow: 0 4px 20px var(--shadow);
+            margin-bottom: 40px;
+            animation: slideUp 0.6s ease-out 0.2s backwards;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .card-title {
+            font-family: 'Literata', serif;
+            font-size: 1.8em;
+            color: var(--primary);
+            margin-bottom: 20px;
+            font-weight: 600;
+            text-align: center;
+        }
+
+        .card-description {
+            color: var(--text);
+            margin-bottom: 30px;
+            font-size: 1.1em;
+            line-height: 1.8;
+            text-align: center;
+        }
+
+        .features-list {
+            list-style: none;
+            margin-bottom: 35px;
+            max-width: 550px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .features-list li {
+            padding: 10px 0;
+            color: var(--text);
+            position: relative;
+            padding-left: 30px;
+            font-size: 1.05em;
+        }
+
+        .features-list li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+            font-weight: bold;
+            font-size: 1.3em;
+        }
+
+        .button-container {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .button {
+            display: inline-block;
+            background: var(--primary);
+            color: white;
+            padding: 18px 40px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1em;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(45, 95, 93, 0.3);
+        }
+
+        .button:hover {
+            background: var(--primary-light);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(45, 95, 93, 0.4);
+        }
+
+        .button.secondary {
+            background: var(--accent);
+        }
+
+        .button.secondary:hover {
+            background: #a58159;
+        }
+
+        .questions-preview {
+            background: #f9f8f6;
+            border-left: 4px solid var(--accent);
+            padding: 25px;
+            border-radius: 8px;
+            margin-top: 40px;
+        }
+
+        .questions-preview h3 {
+            color: var(--primary);
+            margin-bottom: 15px;
+            font-family: 'Literata', serif;
+        }
+
+        .questions-preview ul {
+            list-style: none;
+            color: var(--text-light);
+            font-size: 0.95em;
+            line-height: 1.8;
+        }
+
+        .questions-preview li {
+            padding: 5px 0;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 40px;
+            padding: 20px;
+            color: var(--text-light);
+            font-size: 0.95em;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.2em;
+            }
+
+            .main-card {
+                padding: 35px 25px;
+            }
+
+            .button-container {
+                flex-direction: column;
+            }
+
+            .button {
+                width: 100%;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>My Notes & Reflections</h1>
+            <p class="subtitle">A thoughtful space for your cancer journey</p>
+            <p class="intro-text">
+                Process your thoughts, celebrate victories, and reflect on what matters most. 
+                A gentle companion for the difficult days and the hopeful ones.
+            </p>
+            <span class="free-badge">100% FREE</span>
+        </header>
+
+        <div class="main-card">
+            <h2 class="card-title">Choose Your Format</h2>
+            <p class="card-description">
+                Twelve thoughtful reflection prompts to help you process your experiences, 
+                acknowledge your feelings, and find meaning in your journey.
+            </p>
+
+            <ul class="features-list">
+                <li>Explore what you're learning about yourself</li>
+                <li>Identify sources of support and comfort</li>
+                <li>Celebrate small victories</li>
+                <li>Process fears and what makes you feel safe</li>
+                <li>Capture gratitude and meaningful moments</li>
+                <li>Write messages to your future self</li>
+            </ul>
+
+            <div class="button-container">
+                <a href="Notes_and_Reflections_Interactive.html" class="button">Open Online Version</a>
+                <a href="Notes_and_Reflections.pdf" class="button secondary" download>Download PDF</a>
+            </div>
+
+            <div class="questions-preview">
+                <h3>Reflection Prompts Include:</h3>
+                <ul>
+                    <li>• What am I learning about myself through this experience?</li>
+                    <li>• Who or what has been my biggest source of support?</li>
+                    <li>• What small victory can I celebrate today?</li>
+                    <li>• What brings me comfort or peace?</li>
+                    <li>• A moment I felt like myself today...</li>
+                    <li>• And 7 more thoughtful prompts</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>
+                This resource is provided free of charge to support cancer patients and survivors.<br>
+                Share with anyone who might benefit from a space to reflect.
+            </p>
+        </div>
+    </div>
+</body>
+</html>
