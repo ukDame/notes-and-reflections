@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Notes & Reflections - Interactive Journal</title>
+    <title>My Notes & Reflections - Cancer Journey</title>
+    <link href="https://fonts.googleapis.com/css2?family=Literata:wght@400;600;700&family=Source+Sans+3:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -12,409 +13,393 @@
         }
 
         :root {
-            --teal: #4A9B9B;
-            --coral: #E89B7E;
-            --sage: #8FB89C;
-            --charcoal: #2C3E50;
-            --light-bg: #F7F9F9;
-            --white: #ffffff;
-            --light-gray: #E8ECEF;
+            --primary: #2d5f5d;
+            --primary-light: #3d7f7d;
+            --accent: #b8926a;
+            --bg: #faf9f7;
+            --card-bg: #ffffff;
+            --text: #2c3e3c;
+            --text-light: #6b7c7a;
+            --border: #e5e3df;
+            --shadow: rgba(45, 95, 93, 0.08);
         }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, var(--light-bg) 0%, #E8F4F4 100%);
-            color: var(--charcoal);
+            font-family: 'Source Sans 3', sans-serif;
+            background: linear-gradient(135deg, #faf9f7 0%, #f5f3ef 100%);
+            color: var(--text);
             line-height: 1.6;
             padding: 20px;
             min-height: 100vh;
         }
 
         .container {
-            max-width: 800px;
+            max-width: 900px;
             margin: 0 auto;
-            background: var(--white);
-            border-radius: 16px;
-            box-shadow: 0 4px 20px rgba(74, 155, 155, 0.15);
-            overflow: hidden;
+            animation: fadeIn 0.8s ease-out;
         }
 
-        .header {
-            background: linear-gradient(135deg, var(--teal) 0%, var(--sage) 100%);
-            color: var(--white);
-            padding: 40px 30px;
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        header {
             text-align: center;
-        }
-
-        .header h1 {
-            font-size: 2.2em;
-            margin-bottom: 10px;
-            font-weight: 600;
-        }
-
-        .header p {
-            font-size: 1.1em;
-            opacity: 0.95;
-            font-style: italic;
-        }
-
-        .intro {
-            padding: 30px;
-            background: var(--light-bg);
-            border-bottom: 3px solid var(--coral);
-        }
-
-        .intro p {
-            margin-bottom: 12px;
-            font-size: 1em;
-            color: var(--charcoal);
-        }
-
-        .intro p:last-child {
-            margin-top: 18px;
-            font-weight: 500;
-            color: var(--teal);
-        }
-
-        .content {
-            padding: 40px 30px;
-        }
-
-        .reflection-section {
             margin-bottom: 50px;
-            border-left: 4px solid var(--sage);
-            padding-left: 20px;
-            transition: border-color 0.3s ease;
+            padding-bottom: 30px;
+            border-bottom: 2px solid var(--border);
         }
 
-        .reflection-section:hover {
-            border-left-color: var(--teal);
+        h1 {
+            font-family: 'Literata', serif;
+            font-size: 2.8em;
+            color: var(--primary);
+            font-weight: 700;
+            margin-bottom: 15px;
+            letter-spacing: -0.5px;
         }
 
-        .reflection-section label {
-            display: block;
-            font-size: 1.15em;
-            font-weight: 600;
-            color: var(--teal);
+        .subtitle {
+            font-size: 1.2em;
+            color: var(--text-light);
+            font-weight: 300;
             margin-bottom: 15px;
         }
 
-        .reflection-section textarea {
+        .intro-text {
+            font-size: 1.05em;
+            color: var(--text);
+            max-width: 650px;
+            margin: 0 auto;
+            line-height: 1.7;
+            font-style: italic;
+        }
+
+        .date-section {
+            background: var(--card-bg);
+            padding: 25px;
+            border-radius: 12px;
+            margin-bottom: 30px;
+            box-shadow: 0 2px 8px var(--shadow);
+            border-left: 4px solid var(--accent);
+        }
+
+        .date-section label {
+            font-weight: 600;
+            color: var(--primary);
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        .date-section input {
             width: 100%;
-            min-height: 150px;
-            padding: 15px;
-            border: 2px solid var(--light-gray);
+            padding: 12px;
+            border: 2px solid var(--border);
             border-radius: 8px;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             font-size: 1em;
-            line-height: 1.8;
-            color: var(--charcoal);
-            resize: vertical;
-            transition: all 0.3s ease;
-            background: var(--white);
+            font-family: inherit;
+            transition: border-color 0.3s;
         }
 
-        .reflection-section textarea:focus {
+        .date-section input:focus {
             outline: none;
-            border-color: var(--teal);
-            box-shadow: 0 0 0 3px rgba(74, 155, 155, 0.1);
+            border-color: var(--primary);
         }
 
-        .reflection-section textarea::placeholder {
-            color: #A0AEC0;
-            font-style: italic;
+        .reflection-item {
+            background: var(--card-bg);
+            padding: 35px;
+            border-radius: 12px;
+            margin-bottom: 25px;
+            box-shadow: 0 2px 8px var(--shadow);
+            transition: all 0.3s ease;
+            animation: slideIn 0.5s ease-out backwards;
         }
 
-        .autosave-indicator {
-            text-align: right;
-            padding: 0 30px 20px;
+        .reflection-item:nth-child(2) { animation-delay: 0.05s; }
+        .reflection-item:nth-child(3) { animation-delay: 0.1s; }
+        .reflection-item:nth-child(4) { animation-delay: 0.15s; }
+        .reflection-item:nth-child(5) { animation-delay: 0.2s; }
+        .reflection-item:nth-child(6) { animation-delay: 0.25s; }
+        .reflection-item:nth-child(7) { animation-delay: 0.3s; }
+        .reflection-item:nth-child(8) { animation-delay: 0.35s; }
+        .reflection-item:nth-child(9) { animation-delay: 0.4s; }
+        .reflection-item:nth-child(10) { animation-delay: 0.45s; }
+        .reflection-item:nth-child(11) { animation-delay: 0.5s; }
+        .reflection-item:nth-child(12) { animation-delay: 0.55s; }
+        .reflection-item:nth-child(13) { animation-delay: 0.6s; }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateX(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .reflection-item:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 4px 12px rgba(45, 95, 93, 0.12);
+        }
+
+        .question {
+            font-family: 'Literata', serif;
+            font-size: 1.25em;
+            color: var(--primary);
+            margin-bottom: 15px;
+            font-weight: 600;
+            line-height: 1.4;
+        }
+
+        textarea {
+            width: 100%;
+            min-height: 120px;
+            padding: 15px;
+            border: 2px solid var(--border);
+            border-radius: 8px;
+            font-size: 1em;
+            font-family: inherit;
+            line-height: 1.6;
+            resize: vertical;
+            transition: all 0.3s;
+            background: #fafafa;
+        }
+
+        textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+            background: white;
+            box-shadow: 0 0 0 3px rgba(45, 95, 93, 0.1);
+        }
+
+        .helper-text {
             font-size: 0.9em;
-            color: var(--sage);
+            color: var(--text-light);
+            margin-top: 8px;
             font-style: italic;
-        }
-
-        .action-buttons {
-            display: flex;
-            gap: 15px;
-            padding: 30px;
-            border-top: 2px solid var(--light-bg);
-            background: var(--light-bg);
-            flex-wrap: wrap;
-            justify-content: center;
         }
 
         button {
-            padding: 12px 24px;
+            background: var(--primary);
+            color: white;
             border: none;
+            padding: 15px 35px;
             border-radius: 8px;
-            font-size: 1em;
+            font-size: 1.05em;
             font-weight: 600;
             cursor: pointer;
             transition: all 0.3s ease;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: inherit;
+            box-shadow: 0 4px 12px rgba(45, 95, 93, 0.3);
+            margin: 10px 5px;
         }
 
-        .btn-primary {
-            background: var(--teal);
-            color: var(--white);
-        }
-
-        .btn-primary:hover {
-            background: #3A8B8B;
+        button:hover {
+            background: var(--primary-light);
             transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(74, 155, 155, 0.3);
+            box-shadow: 0 6px 16px rgba(45, 95, 93, 0.4);
         }
 
-        .btn-secondary {
-            background: var(--coral);
-            color: var(--white);
+        .button-group {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 40px;
+            flex-wrap: wrap;
         }
 
-        .btn-secondary:hover {
-            background: #D88B6E;
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(232, 155, 126, 0.3);
+        .print-button {
+            background: var(--accent);
         }
 
-        .btn-tertiary {
-            background: var(--light-gray);
-            color: var(--charcoal);
-        }
-
-        .btn-tertiary:hover {
-            background: #D8DCDF;
-        }
-
-        .footer {
-            text-align: center;
-            padding: 20px;
-            font-size: 0.9em;
-            color: var(--sage);
-        }
-
-        @media (max-width: 600px) {
-            .header h1 {
-                font-size: 1.8em;
-            }
-
-            .header p {
-                font-size: 1em;
-            }
-
-            .content {
-                padding: 30px 20px;
-            }
-
-            .action-buttons {
-                flex-direction: column;
-            }
-
-            button {
-                width: 100%;
-            }
+        .print-button:hover {
+            background: #a58159;
         }
 
         @media print {
             body {
                 background: white;
+                padding: 20px;
             }
-
-            .container {
+            .reflection-item {
                 box-shadow: none;
+                border: 1px solid #ddd;
+                page-break-inside: avoid;
             }
-
-            .action-buttons,
-            .autosave-indicator {
+            button {
                 display: none;
             }
+        }
 
-            .reflection-section textarea {
-                border: none;
-                border-bottom: 1px solid #ccc;
-                min-height: 120px;
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.2em;
+            }
+
+            .reflection-item {
+                padding: 25px 20px;
+            }
+
+            .question {
+                font-size: 1.15em;
             }
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <div class="header">
-            <h1>Notes & Reflections</h1>
-            <p>A space to pause, think, and gather your thoughts</p>
+        <header>
+            <h1>My Notes & Reflections</h1>
+            <p class="subtitle">A space for your thoughts, feelings, and insights</p>
+            <p class="intro-text">
+                This is your personal space to reflect on your cancer journey. 
+                There are no right or wrong answers—just your truth.
+            </p>
+        </header>
+
+        <div class="date-section">
+            <label for="date">Date</label>
+            <input type="date" id="date" required>
         </div>
 
-        <div class="intro">
-            <p>Your journey, or the journey of someone you love, may feel overwhelming at times.</p>
-            <p>Writing things down can bring clarity and a sense of control.</p>
-            <p>Use this space for anything that feels important: your thoughts, worries, hopes, questions for your medical team, or simple reminders to yourself.</p>
-            <p>There is no right or wrong way to reflect.</p>
-            <p>Just write what feels true in the moment.</p>
+        <div class="reflection-item">
+            <div class="question">What am I learning about myself through this experience?</div>
+            <textarea placeholder="Take your time... write whatever comes to mind"></textarea>
         </div>
 
-        <div class="autosave-indicator" id="autosaveStatus">
-            Your reflections are automatically saved as you type
+        <div class="reflection-item">
+            <div class="question">Who or what has been my biggest source of support?</div>
+            <textarea placeholder="People, places, activities, faith, pets..."></textarea>
         </div>
 
-        <div class="content">
-            <div class="reflection-section">
-                <label for="remember">What I want to remember:</label>
-                <textarea id="remember" placeholder="Moments, feelings, words that matter to you..."></textarea>
-            </div>
-
-            <div class="reflection-section">
-                <label for="learning">What am I learning about myself through this experience?</label>
-                <textarea id="learning" placeholder="New insights, strengths you've discovered, ways you've grown..."></textarea>
-            </div>
-
-            <div class="reflection-section">
-                <label for="grateful">What I'm grateful for today:</label>
-                <textarea id="grateful" placeholder="Big or small things that brought light to your day..."></textarea>
-            </div>
-
-            <div class="reflection-section">
-                <label for="support">Who or what has been my biggest source of support?</label>
-                <textarea id="support" placeholder="People, places, activities, or beliefs that sustain you..."></textarea>
-            </div>
-
-            <div class="reflection-section">
-                <label for="questions">Questions I want to ask my doctor or nurse:</label>
-                <textarea id="questions" placeholder="Write down anything you want to remember to ask..."></textarea>
-            </div>
-
-            <div class="reflection-section">
-                <label for="victory">What small victory or achievement can I celebrate today (no matter how small)?</label>
-                <textarea id="victory" placeholder="Every step forward counts..."></textarea>
-            </div>
-
-            <div class="reflection-section">
-                <label for="relax">What helped me relax recently:</label>
-                <textarea id="relax" placeholder="Activities, moments, or practices that brought you peace..."></textarea>
-            </div>
-
-            <div class="reflection-section">
-                <label for="comfort">What brings me comfort or peace?</label>
-                <textarea id="comfort" placeholder="Your personal sources of calm and reassurance..."></textarea>
-            </div>
-
-            <div class="reflection-section">
-                <label for="release">What do I need to let go of or release right now?</label>
-                <textarea id="release" placeholder="Worries, expectations, guilt, or anything that no longer serves you..."></textarea>
-            </div>
-
-            <div class="reflection-section">
-                <label for="future">A message to my future self:</label>
-                <textarea id="future" placeholder="Words of encouragement, hope, or wisdom for the days ahead..."></textarea>
-            </div>
+        <div class="reflection-item">
+            <div class="question">What small victory or achievement can I celebrate today (no matter how small)?</div>
+            <textarea placeholder="Every step forward counts"></textarea>
         </div>
 
-        <div class="action-buttons">
-            <button class="btn-primary" onclick="downloadReflections()">📥 Download as Text File</button>
-            <button class="btn-secondary" onclick="printReflections()">🖨️ Print</button>
-            <button class="btn-tertiary" onclick="clearReflections()">🗑️ Clear All</button>
+        <div class="reflection-item">
+            <div class="question">What do I need to let go of or release right now?</div>
+            <textarea placeholder="Worries, expectations, guilt, fear..."></textarea>
         </div>
 
-        <div class="footer">
-            Your reflections are saved locally in your browser. They remain private and are not shared with anyone.
+        <div class="reflection-item">
+            <div class="question">What brings me comfort or peace?</div>
+            <textarea placeholder="Activities, memories, people, places..."></textarea>
+        </div>
+
+        <div class="reflection-item">
+            <div class="question">What scared me today, and what do I need to feel safer?</div>
+            <textarea placeholder="It's okay to acknowledge fears"></textarea>
+        </div>
+
+        <div class="reflection-item">
+            <div class="question">A moment I felt like myself today:</div>
+            <textarea placeholder="Even small moments of normalcy matter"></textarea>
+        </div>
+
+        <div class="reflection-item">
+            <div class="question">What I want to remember:</div>
+            <textarea placeholder="Moments, lessons, insights worth holding onto"></textarea>
+        </div>
+
+        <div class="reflection-item">
+            <div class="question">What I'm grateful for today:</div>
+            <textarea placeholder="Big or small, there's always something"></textarea>
+        </div>
+
+        <div class="reflection-item">
+            <div class="question">Questions I want to ask my doctor or nurse:</div>
+            <textarea placeholder="Write them down so you don't forget"></textarea>
+        </div>
+
+        <div class="reflection-item">
+            <div class="question">What helped me relax recently:</div>
+            <textarea placeholder="Music, meditation, nature, conversation..."></textarea>
+        </div>
+
+        <div class="reflection-item">
+            <div class="question">A message to my future self:</div>
+            <textarea placeholder="What do you want to tell yourself when you look back?"></textarea>
+        </div>
+
+        <div class="button-group">
+            <button onclick="window.print()" class="print-button">Print This Reflection</button>
+            <button onclick="saveData()">Save to Computer</button>
+            <button onclick="clearForm()">Clear Form</button>
         </div>
     </div>
 
     <script>
-        // List of all textarea IDs
-        const textareaIds = [
-            'remember', 'learning', 'grateful', 'support', 'questions',
-            'victory', 'relax', 'comfort', 'release', 'future'
-        ];
+        // Set today's date by default
+        document.getElementById('date').valueAsDate = new Date();
 
-        // Labels for each section
-        const labels = {
-            'remember': 'What I want to remember:',
-            'learning': 'What am I learning about myself through this experience?',
-            'grateful': "What I'm grateful for today:",
-            'support': 'Who or what has been my biggest source of support?',
-            'questions': 'Questions I want to ask my doctor or nurse:',
-            'victory': 'What small victory or achievement can I celebrate today (no matter how small)?',
-            'relax': 'What helped me relax recently:',
-            'comfort': 'What brings me comfort or peace?',
-            'release': 'What do I need to let go of or release right now?',
-            'future': 'A message to my future self:'
-        };
-
-        // Load saved data on page load
-        window.addEventListener('DOMContentLoaded', () => {
-            textareaIds.forEach(id => {
-                const savedValue = localStorage.getItem(`reflection_${id}`);
-                if (savedValue) {
-                    document.getElementById(id).value = savedValue;
-                }
-            });
-        });
-
-        // Autosave functionality
-        let saveTimeout;
-        textareaIds.forEach(id => {
-            const textarea = document.getElementById(id);
-            textarea.addEventListener('input', () => {
-                clearTimeout(saveTimeout);
-                document.getElementById('autosaveStatus').textContent = 'Saving...';
-                
-                saveTimeout = setTimeout(() => {
-                    localStorage.setItem(`reflection_${id}`, textarea.value);
-                    document.getElementById('autosaveStatus').textContent = 'Saved ✓';
-                    setTimeout(() => {
-                        document.getElementById('autosaveStatus').textContent = 
-                            'Your reflections are automatically saved as you type';
-                    }, 2000);
-                }, 1000);
-            });
-        });
-
-        // Download as text file
-        function downloadReflections() {
-            let content = "NOTES & REFLECTIONS\n";
-            content += "A space to pause, think, and gather your thoughts\n";
-            content += "═".repeat(60) + "\n\n";
-            
-            textareaIds.forEach(id => {
-                const value = document.getElementById(id).value;
-                if (value.trim()) {
-                    content += labels[id] + "\n";
-                    content += "─".repeat(60) + "\n";
-                    content += value + "\n\n\n";
-                }
-            });
-
-            content += "\n" + "═".repeat(60) + "\n";
-            content += "Created: " + new Date().toLocaleDateString('en-US', { 
-                year: 'numeric', 
-                month: 'long', 
-                day: 'numeric' 
-            });
-
-            const blob = new Blob([content], { type: 'text/plain' });
-            const url = URL.createObjectURL(blob);
-            const a = document.createElement('a');
-            a.href = url;
-            a.download = `Reflections_${new Date().toISOString().split('T')[0]}.txt`;
-            document.body.appendChild(a);
-            a.click();
-            document.body.removeChild(a);
-            URL.revokeObjectURL(url);
-        }
-
-        // Print reflections
-        function printReflections() {
-            window.print();
-        }
-
-        // Clear all reflections with confirmation
-        function clearReflections() {
-            if (confirm('Are you sure you want to clear all your reflections? This action cannot be undone.')) {
-                textareaIds.forEach(id => {
-                    document.getElementById(id).value = '';
-                    localStorage.removeItem(`reflection_${id}`);
+        function clearForm() {
+            if (confirm('Are you sure you want to clear all entries? This cannot be undone.')) {
+                document.querySelectorAll('textarea').forEach(elem => {
+                    elem.value = '';
                 });
-                alert('All reflections have been cleared.');
             }
+        }
+
+        function saveData() {
+            const date = document.getElementById('date').value || 'no-date';
+            let output = '';
+            
+            output += '='.repeat(60) + '\n';
+            output += 'MY NOTES & REFLECTIONS\n';
+            output += '='.repeat(60) + '\n\n';
+            output += `Date: ${date}\n\n`;
+            
+            const questions = [
+                "What am I learning about myself through this experience?",
+                "Who or what has been my biggest source of support?",
+                "What small victory or achievement can I celebrate today (no matter how small)?",
+                "What do I need to let go of or release right now?",
+                "What brings me comfort or peace?",
+                "What scared me today, and what do I need to feel safer?",
+                "A moment I felt like myself today:",
+                "What I want to remember:",
+                "What I'm grateful for today:",
+                "Questions I want to ask my doctor or nurse:",
+                "What helped me relax recently:",
+                "A message to my future self:"
+            ];
+            
+            const textareas = document.querySelectorAll('textarea');
+            
+            questions.forEach((question, index) => {
+                const answer = textareas[index]?.value || '';
+                if (answer.trim()) {
+                    output += question + '\n';
+                    output += '-'.repeat(40) + '\n';
+                    output += answer + '\n\n';
+                }
+            });
+            
+            output += '='.repeat(60) + '\n';
+            output += 'End of Reflections\n';
+            output += '='.repeat(60) + '\n';
+
+            // Create downloadable text file
+            const dataBlob = new Blob([output], {type: 'text/plain'});
+            const url = URL.createObjectURL(dataBlob);
+            const link = document.createElement('a');
+            link.href = url;
+            link.download = `notes-and-reflections-${date}.txt`;
+            link.click();
+            URL.revokeObjectURL(url);
+            
+            alert('Your reflections have been saved! Check your Downloads folder.');
         }
     </script>
 </body>
